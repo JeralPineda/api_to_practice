@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
+
 import postRouter from './routes/post.routes.js';
+import authRouter from './routes/user.routes.js';
 
 const app = express();
 
@@ -9,6 +12,9 @@ const app = express();
 
 // CORS (connectar con FrontEnd)
 app.use(cors());
+
+// Morgan
+app.use(morgan('dev'));
 
 // Lectura y parseo del body
 app.use(express.json());
@@ -24,5 +30,6 @@ app.use(
 
 // Rutas
 app.use('/api/posts', postRouter);
+app.use('/api/auth', authRouter);
 
 export default app;
