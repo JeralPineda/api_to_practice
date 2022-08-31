@@ -19,6 +19,12 @@ const postSchema = new mongoose.Schema({
     url: String,
     public_id: String,
   },
+  user: {
+    //Relación
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+    required: [true, 'El usuario es requerido'],
+  },
 });
 
 // Configuración para que se muestre solo la información que necesito ver
