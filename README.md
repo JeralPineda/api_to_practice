@@ -39,22 +39,22 @@ SECRETORPRIVATEKEY=
 
 **Posts**
 
-- GET: ` https://localhost:4000/api/posts`
+- GET: ` https://jeral-api-practice.herokuapp.com/api/posts`
 
-- GET: ` https://localhost:4000/api/posts/id`
+- GET: ` https://jeral-api-practice.herokuapp.com/api/posts/id`
 
-- POST ` https://localhost:4000/api/posts`
+- POST ` https://jeral-api-practice.herokuapp.com/api/posts`
 
-- PUT ` https://localhost:4000/api/posts/:id`
+- PUT ` https://jeral-api-practice.herokuapp.com/api/posts/:id`
 
-- DELETE ` https://localhost:4000/api/posts/:id`
+- DELETE ` https://jeral-api-practice.herokuapp.com/api/posts/:id`
 
 **Login**
 
-- POST: ` https://localhost:4000/api/auth/login`
+- POST: ` https://jeral-api-practice.herokuapp.com/api/auth/login`
 
-- POST ` https://localhost:4000/api/auth/register`
+- POST ` https://jeral-api-practice.herokuapp.com/api/auth/register`
 
-- PUT ` https://localhost:4000/api/auth/:id`
+- PUT ` https://jeral-api-practice.herokuapp.com/api/auth/:id`
 
-- DELETE ` https://localhost:4000/api/auth/:id`
+- DELETE ` https://jeral-api-practice.herokuapp.com/api/auth/:id`
