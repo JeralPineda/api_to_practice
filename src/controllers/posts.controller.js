@@ -3,8 +3,11 @@ import Post from '../models/Post.js';
 import { deleteImage, uploadImage } from '../libs/cloudinary.js';
 
 export const getPosts = async (req, res) => {
+  // Obtener el id del usuario autenticado
+  const { id: idUser } = req.user;
+
   try {
-    const posts = await Post.find();
+    const posts = await Post.find({ user: idUser }).sort({ creado: -1 });
 
     res.json({
       ok: true,
@@ -20,10 +23,12 @@ export const getPosts = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  try {
-    const { id } = req.params;
+  // Obtener el id del usuario autenticado
+  const { id: idUser } = req.user;
 
-    const post = await Post.findById(id);
+  const { id } = req.params;
+  try {
+    const post = await Post.findOne({ user: idUser, id });
 
     // Verificar que el post con el id exista en la DB
     if (!post) {
@@ -47,10 +52,13 @@ export const getPost = async (req, res) => {
 };
 
 export const newPost = async (req, res) => {
-  try {
-    const { title, description } = req.body;
-    let image = null;
+  // Obtener el id del usuario autenticado
+  const { id: idUser } = req.user;
 
+  const { title, description } = req.body;
+  let image = null;
+
+  try {
     // Si la imagen viene se guarda en cloudinary
     if (req.files?.image) {
       const result = await uploadImage(req.files.image.tempFilePath);
@@ -64,7 +72,7 @@ export const newPost = async (req, res) => {
       };
     }
 
-    const newPost = new Post({ title, description, image });
+    const newPost = new Post({ title, description, image, user: idUser });
 
     // Guardar en la DB
     await newPost.save();
@@ -83,9 +91,9 @@ export const newPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-  try {
-    const { id } = req.params;
+  const { id } = req.params;
 
+  try {
     // get post
     const post = await Post.findById(id);
 
@@ -118,7 +126,7 @@ export const updatePost = async (req, res) => {
     }
 
     // Se actualiza el post
-    const postUpdated = await Post.findByIdAndUpdate(id, { $set: req.body }, { new: true });
+    const postUpdated = await Post.findByIdAndUpdate(post.id, { $set: req.body }, { new: true });
 
     res.json({
       ok: true,
@@ -134,9 +142,9 @@ export const updatePost = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
-  try {
-    const { id } = req.params;
+  const { id } = req.params;
 
+  try {
     const post = await Post.findByIdAndDelete(id);
 
     //  Validar si el post tiene imagen

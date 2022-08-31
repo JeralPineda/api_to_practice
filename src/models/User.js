@@ -1,38 +1,36 @@
 import mongoose from 'mongoose';
 
-const postSchema = new mongoose.Schema({
-  title: {
+const userSchema = new mongoose.Schema({
+  name: {
     type: String,
-    required: true,
+    required: [true, 'El nombre es obligatorio'],
     trim: true, //limpiar espacios
   },
-  description: {
+  email: {
     type: String,
-    required: true,
-    trim: true,
+    required: [true, 'El correo es obligatorio'],
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: [true, 'La contraseña es obligatoria'],
+  },
+  active: {
+    type: Boolean,
+    default: true,
   },
   created: {
     type: Date,
     default: new Date(+new Date() + 7 * 24 * 60 * 60 * 1000),
   },
-  image: {
-    url: String,
-    public_id: String,
-  },
-  user: {
-    //Relación
-    type: mongoose.Types.ObjectId,
-    ref: 'User',
-    required: [true, 'El usuario es requerido'],
-  },
 });
 
 // Configuración para que se muestre solo la información que necesito ver
-postSchema.methods.toJSON = function () {
+userSchema.methods.toJSON = function () {
   const { __v, _id, ...object } = this.toObject(); //Referencia a todo el objeto
   object.id = _id; // Remplazo en el object
 
   return object;
 };
 
-export default mongoose.model('Post', postSchema);
+export default mongoose.model('User', userSchema);

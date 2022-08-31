@@ -1,18 +1,63 @@
 import { Router } from 'express';
+import { check } from 'express-validator';
 
-import { deletePost, getPost, getPosts, newPost, updatePost } from '../controllers/posts.controller.js';
+import { validarJWT } from '../middlewares/validar-jwt.js';
+import { validarCampos } from '../middlewares/validar-campos.js';
 import { validateImage } from '../middlewares/validate-file.js';
+import { deletePost, getPost, getPosts, newPost, updatePost } from '../controllers/posts.controller.js';
 
 const router = Router();
 
-router.get('/', getPosts);
+router.get('/', validarJWT, getPosts);
 
-router.get('/:id', getPost);
+router.get(
+  '/:id',
+  [
+    //
+    validarJWT,
+    check('id', 'No es un id de Mongo valido').isMongoId(),
+    validarCampos,
+  ],
+  getPost
+);
 
-router.post('/', validateImage, newPost);
+router.post(
+  '/',
 
-router.put('/:id', validateImage, updatePost);
+  [
+    //
+    validarJWT,
+    validateImage,
+    check('title', 'El titulo es obligatorio').not().isEmpty(),
+    check('description', 'La descripción es obligatoria').not().isEmpty(),
+    validarCampos,
+  ],
+  newPost
+);
 
-router.delete('/:id', deletePost);
+router.put(
+  '/:id',
+  [
+    //
+    validarJWT,
+    validateImage,
+    check('id', 'No es un id de Mongo valido').isMongoId(),
+    check('title', 'El titulo es obligatorio').not().isEmpty(),
+    check('description', 'La descripción es obligatoria').not().isEmpty(),
+    validarCampos,
+  ],
+  updatePost
+);
+
+router.delete(
+  '/:id',
+  [
+    //
+    validarJWT,
+    check('id', 'No es un id de Mongo valido').isMongoId(),
+    validarCampos,
+  ],
+  deletePost
+);
 
 export default router;
