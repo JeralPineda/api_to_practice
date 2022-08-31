@@ -55,6 +55,4 @@ SECRETORPRIVATEKEY=
 
 - POST ` https://jeral-api-practice.herokuapp.com/api/auth/register`
 
-- PUT ` https://jeral-api-practice.herokuapp.com/api/auth/:id`
-
-- DELETE ` https://jeral-api-practice.herokuapp.com/api/auth/:id`
+- GET ` https://jeral-api-practice.herokuapp.com/api/renew`
