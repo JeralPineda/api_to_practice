@@ -28,8 +28,6 @@ export const getPost = async (req, res) => {
   try {
     const post = await Post.findById(id);
 
-    console.log(post);
-
     // Verificar que el post con el id exista en la DB
     if (!post) {
       return res.status(404).json({
