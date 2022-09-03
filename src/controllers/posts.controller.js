@@ -24,7 +24,7 @@ export const getPosts = async (req, res) => {
 
 export const getPost = async (req, res) => {
   // Obtener el id del usuario autenticado
-  const { id: idUser } = req.user;
+  const { id: idUser } = req.params;
 
   const { id } = req.params;
   try {
