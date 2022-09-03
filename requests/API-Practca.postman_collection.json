@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "ffa4d20a-6982-46e0-b94a-dd809f11370b",
+		"name": "API-Practca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12047181"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "get-Posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGVmYWVkYzFkZDJmMjU0YzQ5MTFlZCIsIm5hbWUiOiJKZXJhbCBQaW5lZGEiLCJpYXQiOjE2NjE5Mjg5NzEsImV4cCI6MTY2MTkzMTM3MX0.uHBzHbjzpH490cxHivuS3rw3UqeL9zXAsvofZleASnI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGVmYWVkYzFkZDJmMjU0YzQ5MTFlZCIsIm5hbWUiOiJKZXJhbCBQaW5lZGEiLCJpYXQiOjE2NjIyMTExNjIsImV4cCI6MTY2MjIxMzU2Mn0.PxBjkJjmPr2T0QVWf0zemlTO62O-uinY7ppZ_Q-X4sg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/posts/630efaedc1dd2f254c4911ed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"630efaedc1dd2f254c4911ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new-Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGVmYWVkYzFkZDJmMjU0YzQ5MTFlZCIsIm5hbWUiOiJKZXJhbCBQaW5lZGEiLCJpYXQiOjE2NjE5Mjg5NzEsImV4cCI6MTY2MTkzMTM3MX0.uHBzHbjzpH490cxHivuS3rw3UqeL9zXAsvofZleASnI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Mi nuevo post2\",\n    \"description\": \"Este es mi primer post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGVmYWVkYzFkZDJmMjU0YzQ5MTFlZCIsIm5hbWUiOiJKZXJhbCBQaW5lZGEiLCJpYXQiOjE2NjE5MzAzOTUsImV4cCI6MTY2MTkzMjc5NX0.Upay-G2hMDQnkVbwV5INon7AQW07hUst2z-7PUfoX4Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Mi nuevo post actualizado\",\n    \"description\": \"Este es mi primer post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/posts/630f06645e5a66691c56df1c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"630f06645e5a66691c56df1c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/posts/630ec2eadd560b2bed68e33b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"630ec2eadd560b2bed68e33b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "image-Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jeral.cris.jp@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jeral Pineda\",\n    \"email\": \"jeral.cris.jp@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "revalidarUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGVmYWVkYzFkZDJmMjU0YzQ5MTFlZCIsIm5hbWUiOiJKZXJhbCBQaW5lZGEiLCJpYXQiOjE2NjE5MjY4NTEsImV4cCI6MTY2MTkyOTI1MX0.RuvRAOhWeKkTeYsy42pj-HtfN-pfhoAcWaVGPqiUGwg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/auth/renew",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"renew"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
