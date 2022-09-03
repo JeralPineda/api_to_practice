@@ -23,12 +23,12 @@ export const getPosts = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  // Obtener el id del usuario autenticado
-  const { id: idUser } = req.params;
-
   const { id } = req.params;
+
   try {
-    const post = await Post.findOne({ user: idUser, id });
+    const post = await Post.findById(id);
+
+    console.log(post);
 
     // Verificar que el post con el id exista en la DB
     if (!post) {
